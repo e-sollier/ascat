@@ -2580,6 +2580,20 @@ ascat.predictGermlineGenotypes = function(ASCATobj, platform = "AffySNP6", img.d
   
 }
 
+#' @title ascat.predictGermlineGenotypes_NGS
+#' @description predicts the germline genotypes of samples for which no matched germline sample
+#' is available
+#' @param ASCATobj an ASCAT object
+#' @param maxHomozygous
+#' @param proportionHetero
+#' @param proportionHomo
+#' @param proportionOpen
+#' @param segmentLength
+#' @param img.dir directory in which figures will be written
+#' @param img.prefix prefix for figure names
+#' @return predicted germline genotypes
+#'
+#' @export
 ascat.predictGermlineGenotypes_NGS = function(ASCATobj, maxHomozygous=0.025,proportionHetero=0.15,proportionHomo=0.80,proportionOpen=0.05,segmentLength=100, img.dir=".", img.prefix="") {
   Homozygous = matrix(nrow = dim(ASCATobj$Tumor_LogR)[1], ncol = dim(ASCATobj$Tumor_LogR)[2])
   colnames(Homozygous) = colnames(ASCATobj$Tumor_LogR)
