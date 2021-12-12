@@ -2580,7 +2580,7 @@ ascat.predictGermlineGenotypes = function(ASCATobj, platform = "AffySNP6", img.d
   
 }
 
-ascat.predictGermlineGenotypes_NGS = function(ASCATobj, maxHomozygous=0.025,proportionHetero=0.15.proportionHomo=0.80,proportionOpen=0.05,segmentLength=100, img.dir=".", img.prefix="") {
+ascat.predictGermlineGenotypes_NGS = function(ASCATobj, maxHomozygous=0.025,proportionHetero=0.15,proportionHomo=0.80,proportionOpen=0.05,segmentLength=100, img.dir=".", img.prefix="") {
   Homozygous = matrix(nrow = dim(ASCATobj$Tumor_LogR)[1], ncol = dim(ASCATobj$Tumor_LogR)[2])
   colnames(Homozygous) = colnames(ASCATobj$Tumor_LogR)
   rownames(Homozygous) = rownames(ASCATobj$Tumor_LogR)
