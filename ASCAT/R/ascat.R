@@ -131,7 +131,7 @@ ascat.loadData = function(Tumor_LogR_file, Tumor_BAF_file, Germline_LogR_file = 
 ascat.plotRawData = function(ASCATobj, img.dir=".", img.prefix="") {
   print.noquote("Plotting tumor data")
   for (i in 1:dim(ASCATobj$Tumor_LogR)[2]) {
-    png(filename = file.path(img.dir, paste(img.prefix, ASCATobj$samples[i],".tumour.png",sep="")), width = 2000, height = 1000, res = 400)
+    png(filename = file.path(img.dir, paste(img.prefix, ASCATobj$samples[i],".tumour.png",sep="")), width = 2000, height = 1000, res = 50)
     par(mar = c(0.5,5,5,0.5), mfrow = c(2,1), cex = 0.4, cex.main=3, cex.axis = 2, pch = ifelse(dim(ASCATobj$Tumor_LogR)[1]>100000,".",20))
     plot(c(1,dim(ASCATobj$Tumor_LogR)[1]), c(-1,1), type = "n", xaxt = "n", main = paste(ASCATobj$samples[i], ", tumor data, LogR", sep = ""), xlab = "", ylab = "")
     points(ASCATobj$Tumor_LogR[,i],col="red")
@@ -166,7 +166,7 @@ ascat.plotRawData = function(ASCATobj, img.dir=".", img.prefix="") {
   if(!is.null(ASCATobj$Germline_LogR)) {
     print.noquote("Plotting germline data")
     for (i in 1:dim(ASCATobj$Germline_LogR)[2]) {
-      png(filename = file.path(img.dir, paste(img.prefix, ASCATobj$samples[i],".germline.png",sep="")), width = 2000, height = 1000, res = 400)
+      png(filename = file.path(img.dir, paste(img.prefix, ASCATobj$samples[i],".germline.png",sep="")), width = 2000, height = 1000, res = 50)
       par(mar = c(0.5,5,5,0.5), mfrow = c(2,1), cex = 0.4, cex.main=3, cex.axis = 2, pch = ifelse(dim(ASCATobj$Tumor_LogR)[1]>100000,".",20))
       plot(c(1,dim(ASCATobj$Germline_LogR)[1]), c(-1,1), type = "n", xaxt = "n", main = paste(ASCATobj$samples[i], ", germline data, LogR", sep = ""), xlab = "", ylab = "")
       points(ASCATobj$Germline_LogR[,i],col="red")
@@ -567,7 +567,7 @@ ascat.plotSegmentedData = function(ASCATobj, img.dir=".", img.prefix="") {
     AllIDs = 1:dim(ASCATobj$Tumor_LogR)[1]
     names(AllIDs) = rownames(ASCATobj$Tumor_LogR)
     HetIDs = AllIDs[Select_nonNAs]
-    png(filename = file.path(img.dir, paste(img.prefix, ASCATobj$samples[arraynr],".ASPCF.png",sep="")), width = 2000, height = 1000, res = 400)
+    png(filename = file.path(img.dir, paste(img.prefix, ASCATobj$samples[arraynr],".ASPCF.png",sep="")), width = 2000, height = 1000, res = 50)
     par(mar = c(0.5,5,5,0.5), mfrow = c(2,1), cex = 0.4, cex.main=3, cex.axis = 2)
     r = ASCATobj$Tumor_LogR_segmented[rownames(ASCATobj$Tumor_BAF_segmented[[arraynr]]),arraynr]
     beta = ASCATobj$Tumor_BAF_segmented[[arraynr]][,,drop=FALSE]
@@ -1273,7 +1273,7 @@ runASCAT = function(lrr, baf, lrrsegmented, bafsegmented, gender, SNPpos, chromo
         pdf(file = nonroundedprofilepng, width = 20, height = y_limit, pointsize=20)
       }
       else{
-        png(filename = nonroundedprofilepng, width = 2000, height = (y_limit*100), res = 400)
+        png(filename = nonroundedprofilepng, width = 2000, height = (y_limit*100), res = 50)
       }
     }
     
@@ -1462,7 +1462,7 @@ runASCAT = function(lrr, baf, lrrsegmented, bafsegmented, gender, SNPpos, chromo
         pdf(file = copynumberprofilespng, width = 20, height = y_limit, pointsize=20)
       }
       else{
-        png(filename = copynumberprofilespng, width = 2000, height = (y_limit*100), res = 400)
+        png(filename = copynumberprofilespng, width = 2000, height = (y_limit*100), res = 50)
       }
     }
     #plot ascat profile
@@ -2566,7 +2566,7 @@ ascat.predictGermlineGenotypes = function(ASCATobj, platform = "AffySNP6", img.d
       
     }
     
-    png(filename = file.path(img.dir,paste(img.prefix, "tumorSep",colnames(ASCATobj$Tumor_LogR)[i],".png",sep="")), width = 2000, height = 500, res = 400)
+    png(filename = file.path(img.dir,paste(img.prefix, "tumorSep",colnames(ASCATobj$Tumor_LogR)[i],".png",sep="")), width = 2000, height = 500, res = 50)
     title = paste(paste(colnames(ASCATobj$Tumor_BAF)[i], Hetero), Homo)
     ascat.plotGenotypes(ASCATobj,title,Tumor_BAF_noNA, Hom, ch_noNA)
     dev.off()
@@ -2726,7 +2726,7 @@ ascat.predictGermlineGenotypes_NGS = function(ASCATobj, maxHomozygous=0.025,prop
       
     }
     
-    png(filename = file.path(img.dir,paste(img.prefix, "tumorSep",colnames(ASCATobj$Tumor_LogR)[i],".png",sep="")), width = 2000, height = 500, res = 400)
+    png(filename = file.path(img.dir,paste(img.prefix, "tumorSep",colnames(ASCATobj$Tumor_LogR)[i],".png",sep="")), width = 2000, height = 500, res = 50)
     title = paste(paste(colnames(ASCATobj$Tumor_BAF)[i], Hetero), Homo)
     ascat.plotGenotypes(ASCATobj,title,Tumor_BAF_noNA, Hom, ch_noNA)
     dev.off()
